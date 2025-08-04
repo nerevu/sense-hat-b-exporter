@@ -143,7 +143,7 @@ class TCS34725:
         self.INT = DigitalInputDevice(INT_PORT, pull_up=True, active_state=None)
 
         if self.debug:
-            print("Reseting TSL2581")
+            print("Resetting TSL2581")
 
         if self.TCS34725_init() == 1:
             print("TCS34725 initialization error!!")
