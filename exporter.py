@@ -25,9 +25,9 @@ REQUEST_TIME = Summary("request_processing_seconds", "Time spent processing requ
 
 
 class SenseHatB(object):
-    def __init__(self):
+    def __init__(self, bus=1):
         if smbus and lgpio:
-            shtc3 = SHTC3.SHTC3()
+            shtc3 = SHTC3.SHTC3(bus=bus)
             icm20948 = ICM20948.ICM20948()
 
             self.pressure = LPS22HB.LPS22HB().pressure
@@ -145,12 +145,13 @@ if __name__ == "__main__":
         help="The interface/IP to bind to",
         default="0.0.0.0",
     )
+    parser.add_argument("--bus", help="The I2C bus to read", type=int, default=1)
 
     if smbus and lgpio:
         args = parser.parse_args()
         log.info("listening on http://%s:%d/metrics", args.bind, int(args.port))
 
-        sense = SenseHatB()
+        sense = SenseHatB(bus=args.bus)
         REGISTRY.register(SenseHatBCollector(sense))
         start_http_server(int(args.port), addr=args.bind)
 
