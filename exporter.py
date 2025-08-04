@@ -145,10 +145,6 @@ if __name__ == "__main__":
         help="The interface/IP to bind to",
         default="0.0.0.0",
     )
-    parser.add_argument(
-        "--orientation", help="Output orientation data", action="store_true"
-    )
-    parser.set_defaults(orientation=False)
 
     if smbus and lgpio:
         args = parser.parse_args()
