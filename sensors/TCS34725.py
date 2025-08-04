@@ -338,6 +338,8 @@ class TCS34725:
 
     @property
     def lux(self):
+        self.Get_RGBData()
+
         atime_ms = (256 - self.IntegrationTime_t) * 2.4
         if self.R + self.G + self.B > self.C:
             ir = (self.R + self.G + self.B - self.C) / 2
@@ -366,6 +368,8 @@ class TCS34725:
 
     @property
     def color_temp(self):
+        light.Get_RGBData()
+
         ir = 1.0
         if self.R + self.G + self.B > self.C:
             ir = (self.R + self.G + self.B - self.C - 1) / 2
@@ -383,7 +387,6 @@ if __name__ == "__main__":
 
     while True:
         try:
-            light.Get_RGBData()
             light.GetRGB888()
             light.GetRGB565()
             print("R: %d " % light.RGB888_R, end="")
