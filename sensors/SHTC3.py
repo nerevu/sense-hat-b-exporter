@@ -24,6 +24,7 @@ class SHTC3:
             return
 
         self._sbc = sbc
+        print({"bus": bus, "address": address, "flags": flags})
         self._fd = self._sbc.i2c_open(bus, address, flags)
         self.SHTC_SOFT_RESET()
 
