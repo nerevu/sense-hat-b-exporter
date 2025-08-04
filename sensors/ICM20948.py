@@ -380,12 +380,20 @@ class ICM20948(object):
         q2q3 = q2 * q3
         q3q3 = q3 * q3
 
-        norm = float(1 / math.sqrt(ax * ax + ay * ay + az * az))
+        try:
+            norm = float(1 / math.sqrt(ax * ax + ay * ay + az * az))
+        except ZeroDivisionError:
+            norm = 0.0
+
         ax = ax * norm
         ay = ay * norm
         az = az * norm
 
-        norm = float(1 / math.sqrt(mx * mx + my * my + mz * mz))
+        try:
+            norm = float(1 / math.sqrt(mx * mx + my * my + mz * mz))
+        except ZeroDivisionError:
+            norm = 0.0
+
         mx = mx * norm
         my = my * norm
         mz = mz * norm
