@@ -1,0 +1,1 @@
+all = ["LPS22HB", "SHTC3", "ICM20948", "TCS34725"]

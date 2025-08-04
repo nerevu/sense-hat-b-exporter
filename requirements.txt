@@ -1,0 +1,5 @@
+prometheus-client
+smbus
+lgpio
+gpiozero
+RPi.GPIO
