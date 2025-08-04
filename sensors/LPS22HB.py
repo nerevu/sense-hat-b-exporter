@@ -78,7 +78,7 @@ class LPS22HB(object):
     @property
     def pressure(self):
         u8Buf = [0, 0, 0]
-        lps22hb.LPS22HB_START_ONESHOT()
+        self.LPS22HB_START_ONESHOT()
         u8Buf[0] = self._read_byte(LPS_PRESS_OUT_XL)
         u8Buf[1] = self._read_byte(LPS_PRESS_OUT_L)
         u8Buf[2] = self._read_byte(LPS_PRESS_OUT_H)
@@ -87,7 +87,7 @@ class LPS22HB(object):
     @property
     def temperature(self):
         u8Buf = [0, 0, 0]
-        lps22hb.LPS22HB_START_ONESHOT()
+        self.LPS22HB_START_ONESHOT()
         u8Buf[0] = lps22hb._read_byte(LPS_TEMP_OUT_L)
         u8Buf[1] = lps22hb._read_byte(LPS_TEMP_OUT_H)
         return ((u8Buf[1] << 8) + u8Buf[0]) / 100.0

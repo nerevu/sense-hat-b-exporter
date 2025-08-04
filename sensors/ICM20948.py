@@ -471,11 +471,11 @@ class ICM20948(object):
 
     @property
     def acceleration(self):
-        icm20948.icm20948_Gyro_Accel_Read()
-        icm20948.icm20948CalAvgValue()
+        self.icm20948_Gyro_Accel_Read()
+        self.icm20948CalAvgValue()
         time.sleep(0.1)
 
-        icm20948.imuAHRSupdate(
+        self.imuAHRSupdate(
             MotionVal[0] * 0.0175,
             MotionVal[1] * 0.0175,
             MotionVal[2] * 0.0175,
@@ -491,11 +491,11 @@ class ICM20948(object):
 
     @property
     def gyroscope(self):
-        icm20948.icm20948_Gyro_Accel_Read()
-        icm20948.icm20948CalAvgValue()
+        self.icm20948_Gyro_Accel_Read()
+        self.icm20948CalAvgValue()
         time.sleep(0.1)
 
-        icm20948.imuAHRSupdate(
+        self.imuAHRSupdate(
             MotionVal[0] * 0.0175,
             MotionVal[1] * 0.0175,
             MotionVal[2] * 0.0175,
@@ -511,11 +511,11 @@ class ICM20948(object):
 
     @property
     def magnetic(self):
-        icm20948.icm20948MagRead()
-        icm20948.icm20948CalAvgValue()
+        self.icm20948MagRead()
+        self.icm20948CalAvgValue()
         time.sleep(0.1)
 
-        icm20948.imuAHRSupdate(
+        self.imuAHRSupdate(
             MotionVal[0] * 0.0175,
             MotionVal[1] * 0.0175,
             MotionVal[2] * 0.0175,
@@ -531,7 +531,7 @@ class ICM20948(object):
 
     @property
     def orientation(self):
-        icm20948.imuAHRSupdate(
+        self.imuAHRSupdate(
             MotionVal[0] * 0.0175,
             MotionVal[1] * 0.0175,
             MotionVal[2] * 0.0175,
