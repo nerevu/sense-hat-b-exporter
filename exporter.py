@@ -150,8 +150,8 @@ if __name__ == "__main__":
     if smbus and lgpio:
         args = parser.parse_args()
 
-        sense = SenseHatB(bus=args.bus)
-        REGISTRY.register(SenseHatBCollector(sense))
+        # sense = SenseHatB(bus=args.bus)
+        # REGISTRY.register(SenseHatBCollector(sense))
         log.info("listening on http://%s:%d/metrics", args.bind, int(args.port))
         start_http_server(int(args.port), addr=args.bind)
 
