@@ -11,9 +11,9 @@ RUN pip3 install -r requirements.txt
 FROM python:3.12-slim-bookworm
 COPY --from=builder /log /log
 
-RUN groupadd i2c && groupadd gpio && groupadd spi
-RUN useradd -ms /bin/bash -g staff -G i2c,gpio,spi,dialout sensehat
-RUN usermod -aG i2c,gpio,spi,dialout sensehat
+RUN groupadd -g 993 gpio && groupadd -g 994 i2c && groupadd -g 995 spi
+RUN useradd -ms /bin/bash -g staff -G gpio,i2c,spi,dialout sensehat
+# RUN usermod -aG gpio,i2c,spi,dialout sensehat
 USER sensehat
 WORKDIR /home/sensehat
 
