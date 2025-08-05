@@ -77,7 +77,7 @@ class SenseHatBCollector(object):
 
         family = GaugeMetricFamily(
             name="sense_hat_b_acceleration",
-            documentation="g as measured by Waveshare Sense HAT (B)",
+            documentation="G as measured by Waveshare Sense HAT (B)",
             labels=["axis"],
         )
         family.add_metric(["x"], accel_x)
@@ -121,7 +121,7 @@ class SenseHatBCollector(object):
 
         yield GaugeMetricFamily(
             name="sense_hat_b_lux",
-            documentation="Measured by Waveshare Sense HAT (B)",
+            documentation="Lux as measured by Waveshare Sense HAT (B)",
             value=self.sense.lux,
         )
 
