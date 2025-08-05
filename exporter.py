@@ -108,10 +108,10 @@ class SenseHatBCollector(object):
         )
 
         yield GaugeMetricFamily(
-            name="sense_hat_b_pressure_pascals",
-            documentation="Pa as measured by Waveshare Sense HAT (B)",
-            value=self.sense.pressure * 100,
-        )  # hPa to Pa
+            name="sense_hat_b_pressure_h_pascals",
+            documentation="hPa as measured by Waveshare Sense HAT (B)",
+            value=self.sense.pressure,
+        )
 
         yield GaugeMetricFamily(
             name="sense_hat_b_humidity",
