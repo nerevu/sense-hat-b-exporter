@@ -465,7 +465,7 @@ class ICM20948(object):
             MotionVal[8],
         )
 
-        return (Accel[0], Accel[1], Accel[2])
+        return tuple(accel/16384 for accel in Accel)
 
     @property
     def gyroscope(self):
@@ -485,7 +485,7 @@ class ICM20948(object):
             MotionVal[8],
         )
 
-        return (Gyro[0], Gyro[1], Gyro[2])
+        return (gyro/32.8 for gyro in Gyro)
 
     @property
     def magnetic(self):
