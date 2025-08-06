@@ -7,7 +7,7 @@ try:
 except ImportError:
     smbus = None
 
-from gpiozero import DigitalInputDevice, TCS34725_ENABLE_PON, TCS34725_ENABLE_AEN
+from gpiozero import DigitalInputDevice
 
 
 # GPIO
@@ -206,7 +206,7 @@ class TCS34725:
         # Turn the device off to save power
         reg = self.Read_Byte(self.TCS34725_ENABLE)
         self.Write_Byte(
-            self.TCS34725_ENABLE, reg & ~(TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN)
+            self.TCS34725_ENABLE, reg & ~(self.TCS34725_ENABLE_PON | self.TCS34725_ENABLE_AEN)
         )
 
     def Interrupt_Enable(self):
