@@ -58,7 +58,6 @@ class SenseHatBCollector(object):
         family.add_metric(["yaw"], yaw)
         return family
 
-
     def gyroscope_metric(self):
         gyro_x, gyro_y, gyro_z = self.sense.gyroscope
         family = GaugeMetricFamily(
@@ -70,7 +69,6 @@ class SenseHatBCollector(object):
         family.add_metric(["y"], gyro_y)
         family.add_metric(["z"], gyro_z)
         return family
-
 
     def accelerometer_metric(self):
         accel_x, accel_y, accel_z = self.sense.acceleration
@@ -84,7 +82,6 @@ class SenseHatBCollector(object):
         family.add_metric(["y"], accel_y)
         family.add_metric(["z"], accel_z)
         return family
-
 
     def magnetometer_metric(self):
         mag_x, mag_y, mag_z = self.sense.magnetic
