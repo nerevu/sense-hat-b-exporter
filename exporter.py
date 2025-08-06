@@ -29,9 +29,11 @@ class SenseHatB(object):
         if smbus and lgpio:
             shtc3 = SHTC3.SHTC3(bus=bus)
             icm20948 = ICM20948.ICM20948()
+            tcs34725 = TCS34725.TCS34725()
 
             self.pressure = LPS22HB.LPS22HB().pressure
-            self.lux = TCS34725.TCS34725().lux
+            self.lux = tcs34725.lux
+            self.color_temp = tcs34725.color_temp
             self.gyroscope = icm20948.gyroscope
             self.orientation = icm20948.orientation
             self.acceleration = icm20948.acceleration
@@ -120,6 +122,12 @@ class SenseHatBCollector(object):
             name="sense_hat_b_lux",
             documentation="Lux as measured by Waveshare Sense HAT (B)",
             value=self.sense.lux,
+        )
+
+        yield GaugeMetricFamily(
+            name="sense_hat_b_color_temp",
+            documentation="Kelvin as measured by Waveshare Sense HAT (B)",
+            value=self.sense.color_temp,
         )
 
         yield self.orientation_metric()
