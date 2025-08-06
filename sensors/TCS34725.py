@@ -390,13 +390,15 @@ if __name__ == "__main__":
     while True:
         try:
             light.GetRGB888()
-            light.GetRGB565()
             print("R: %d " % light.RGB888_R, end="")
             print("G: %d " % light.RGB888_G, end="")
             print("B: %d " % light.RGB888_B, end="")
-            print("C: %#x " % light.C, end="")
-            print("RGB565: %#x " % light.RG565, end="")
             print("RGB888: %#x " % light.RGB888, end="")
+
+            light.GetRGB565()
+            print("RGB565: %#x " % light.RG565, end="")
+
+            print("C: %#x " % light.C, end="")
             print("LUX: %d " % light.lux, end="")
             print("CT: %dK " % light.color_temp, end="")
             print("INT: %d " % light.GetLux_Interrupt(0xFF00, 0x00FF))
