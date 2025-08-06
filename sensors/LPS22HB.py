@@ -108,7 +108,7 @@ if __name__ == "__main__":
                 TEMP_DATA = lps22hb.temperature
 
             print(
-                f"Pressure = {PRESS_DATA:%6.2f} hPa, Temperature = {TEMP_DATA:%6.2f}°C\n"
+                f"Pressure = {PRESS_DATA:6.2f} hPa, Temperature = {TEMP_DATA:6.2f}°C\n"
             )
         except KeyboardInterrupt:
             print("\nProgram end")

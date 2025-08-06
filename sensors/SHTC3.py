@@ -84,7 +84,7 @@ if __name__ == "__main__":
     while True:
         try:
             print(
-                f"Temperature = {shtc3.temperature:%6.2f}°C, Humidity = {shtc3.humidity:%6.2f}%"
+                f"Temperature = {shtc3.temperature:6.2f}°C, Humidity = {shtc3.humidity:6.2f}%"
             )
         except KeyboardInterrupt:
             print("\nProgram end")

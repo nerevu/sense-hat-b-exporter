@@ -572,18 +572,18 @@ if __name__ == "__main__":
             print("\n/-----------------------------------------------------/ \n")
 
             roll, pitch, yaw = icm20948.orientation
-            print(f"\nRoll = {roll:%.2f}, Pitch = {pitch:%.2f}, Yaw = {yaw:%.2f}\n")
+            print(f"\nRoll = {roll:.2f}, Pitch = {pitch:.2f}, Yaw = {yaw:.2f}\n")
 
             accel_x, accel_y, accel_z = icm20948.acceleration
             print(
-                f"\nAcceleration: X = {accel_x:%d}, Y = {accel_y:%d}, Z = {accel_z:%d}\n"
+                f"\nAcceleration: X = {accel_x:d}, Y = {accel_y:d}, Z = {accel_z:d}\n"
             )
 
             gyro_x, gyro_y, gyro_z = icm20948.gyroscope
-            print(f"\nGyroscope: X = {gyro_x:%d}, Y = {gyro_y:%d}, Z = {gyro_z:%d}\n")
+            print(f"\nGyroscope: X = {gyro_x:d}, Y = {gyro_y:d}, Z = {gyro_z:d}\n")
 
             mag_x, mag_y, mag_z = icm20948.magnetic
-            print(f"\nMagnetic: X = {mag_x:%d}, Y = {mag_y:%d}, Z = {mag_z:%d}")
+            print(f"\nMagnetic: X = {mag_x:d}, Y = {mag_y:d}, Z = {mag_z:d}")
         except KeyboardInterrupt:
             print("\nProgram end")
             break
