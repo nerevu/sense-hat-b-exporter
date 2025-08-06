@@ -161,9 +161,7 @@ class SenseHatBCollector(object):
         yield GaugeMetricFamily(
             name="sense_hat_b_tilt",
             documentation="° as measured by Waveshare Sense HAT (B)",
-            value=math.sqrt(
-                self.sense.orientation[0] ** 2 + self.sense.orientation[2] ** 2
-            ),
+            value=math.sqrt(sum(axis**2 for axis in self.sense.orientation[:2])),
         )
 
         yield GaugeMetricFamily(
