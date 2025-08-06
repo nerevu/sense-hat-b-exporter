@@ -133,7 +133,7 @@ class ICM20948(object):
 
         self._address = address
         self._bus = smbus.SMBus(1)
-        bRet = self.icm20948Check()  # Initialization of the device multiple times after power on will result in a return error
+        self.icm20948Check()  # Initialization of the device multiple times after power on will result in a return error
         # while TRUE != bRet:
         #   print("ICM-20948 Error\n" )
         #   time.sleep(0.5)

@@ -7,8 +7,7 @@ try:
 except ImportError:
     smbus = None
 
-from gpiozero import *
-# from gpiozero import DigitalInputDevice, TCS34725_ENABLE_PON, TCS34725_ENABLE_AEN
+from gpiozero import DigitalInputDevice, TCS34725_ENABLE_PON, TCS34725_ENABLE_AEN
 
 
 # GPIO
