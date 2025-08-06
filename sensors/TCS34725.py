@@ -277,6 +277,7 @@ class TCS34725:
 
     # Convert read data to RGB888 format
     def GetRGB888(self):
+        self.Get_RGBData()
         i = 1
         if self.R >= self.G and self.R >= self.B:
             i = self.R // 255 + 1
@@ -305,6 +306,7 @@ class TCS34725:
         self.RGB888 = (self.RGB888_R << 16) | (self.RGB888_G << 8) | (self.RGB888_B)
 
     def GetRGB565(self):
+        self.Get_RGBData()
         i = 1
         RGB565_R = 0
         RGB565_G = 0
@@ -368,7 +370,7 @@ class TCS34725:
 
     @property
     def color_temp(self):
-        light.Get_RGBData()
+        self.Get_RGBData()
 
         ir = 1.0
         if self.R + self.G + self.B > self.C:
