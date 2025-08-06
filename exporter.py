@@ -1,3 +1,4 @@
+import math
 import argparse
 import logging
 import sys
@@ -27,19 +28,46 @@ REQUEST_TIME = Summary("request_processing_seconds", "Time spent processing requ
 class SenseHatB(object):
     def __init__(self, bus=1):
         if smbus and lgpio:
-            shtc3 = SHTC3.SHTC3(bus=bus)
-            icm20948 = ICM20948.ICM20948()
-            tcs34725 = TCS34725.TCS34725()
+            self.shtc3 = SHTC3.SHTC3(bus=bus)
+            self.icm20948 = ICM20948.ICM20948()
+            self.tcs34725 = TCS34725.TCS34725()
+            self.lps22hb = LPS22HB.LPS22HB()
 
-            self.pressure = LPS22HB.LPS22HB().pressure
-            self.lux = tcs34725.lux
-            self.color_temp = tcs34725.color_temp
-            self.gyroscope = icm20948.gyroscope
-            self.orientation = icm20948.orientation
-            self.acceleration = icm20948.acceleration
-            self.magnetic = icm20948.magnetic
-            self.temperature = shtc3.temperature
-            self.humidity = shtc3.humidity
+    @property
+    def pressure(self):
+        return self.lps22hb.pressure
+
+    @property
+    def lux(self):
+        return self.tcs34725.lux
+
+    @property
+    def color_temp(self):
+        return self.tcs34725.color_temp
+
+    @property
+    def gyroscope(self):
+        return self.icm20948.gyroscope
+
+    @property
+    def orientation(self):
+        return self.icm20948.orientation
+
+    @property
+    def acceleration(self):
+        return self.icm20948.acceleration
+
+    @property
+    def magnetic(self):
+        return self.icm20948.magnetic
+
+    @property
+    def temperature(self):
+        return self.shtc3.temperature
+
+    @property
+    def humidity(self):
+        return self.shtc3.humidity
 
 
 class SenseHatBCollector(object):
