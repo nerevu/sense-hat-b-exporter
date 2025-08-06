@@ -11,7 +11,7 @@ import math
 
 Gyro = [0, 0, 0]
 Accel = [0, 0, 0]
-Mag = [0.0, 0.0, 0.0]
+Mag = [0, 0, 0]
 pitch = 0.0
 roll = 0.0
 yaw = 0.0
@@ -225,45 +225,15 @@ class ICM20948(object):
                     REG_ADD_MAG_DATA,
                     MAG_DATA_LEN,
                 )
+
                 U8tempX[i] = (pu8data[1] << 8) | pu8data[0]
                 U8tempY[i] = (pu8data[3] << 8) | pu8data[2]
                 U8tempZ[i] = (pu8data[5] << 8) | pu8data[4]
-            Mag[0] = (
-                U8tempX[0]
-                + U8tempX[1]
-                + U8tempX[2]
-                + U8tempX[3]
-                + U8tempX[4]
-                + U8tempX[5]
-                + U8tempX[6]
-                + U8tempX[7]
-            ) / 8
-            Mag[1] = (
-                -(
-                    U8tempY[0]
-                    + U8tempY[1]
-                    + U8tempY[2]
-                    + U8tempY[3]
-                    + U8tempY[4]
-                    + U8tempY[5]
-                    + U8tempY[6]
-                    + U8tempY[7]
-                )
-                / 8
-            )
-            Mag[2] = (
-                -(
-                    U8tempZ[0]
-                    + U8tempZ[1]
-                    + U8tempZ[2]
-                    + U8tempZ[3]
-                    + U8tempZ[4]
-                    + U8tempZ[5]
-                    + U8tempZ[6]
-                    + U8tempZ[7]
-                )
-                / 8
-            )
+
+            Mag[0] = sum(U8tempX[:8]) // 8
+            Mag[1] = -sum(U8tempY[:8]) // 8
+            Mag[2] = -sum(U8tempZ[:8]) // 8
+
         if Mag[0] >= 32767:  # Solve the problem that Python shift will not overflow
             Mag[0] = Mag[0] - 65535
         elif Mag[0] <= -32767:
