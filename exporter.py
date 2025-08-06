@@ -51,7 +51,7 @@ class SenseHatBCollector(object):
 
         family = GaugeMetricFamily(
             name="sense_hat_b_orientation",
-            documentation="Measured by Waveshare Sense HAT (B)",
+            documentation="° as measured by Waveshare Sense HAT (B)",
             labels=["axis"],
         )
 
