@@ -170,17 +170,17 @@ class SenseHatBCollector(object):
             value=math.sqrt(sum(axis**2 for axis in self.sense.magnetic)),
         )
 
-        yield GaugeMetricFamily(
-            name="sense_hat_b_total_acceleration",
-            documentation="G as measured by Waveshare Sense HAT (B)",
-            value=math.sqrt(sum(axis**2 for axis in self.sense.acceleration)),
-        )
+        # yield GaugeMetricFamily(
+        #     name="sense_hat_b_total_acceleration",
+        #     documentation="G as measured by Waveshare Sense HAT (B)",
+        #     value=math.sqrt(sum(axis**2 for axis in self.sense.acceleration)),
+        # )
 
-        yield GaugeMetricFamily(
-            name="sense_hat_b_angular_velocity",
-            documentation="°/sec as measured by Waveshare Sense HAT (B)",
-            value=math.sqrt(sum(axis**2 for axis in self.sense.gyroscope)),
-        )
+        # yield GaugeMetricFamily(
+        #     name="sense_hat_b_angular_velocity",
+        #     documentation="°/sec as measured by Waveshare Sense HAT (B)",
+        #     value=math.sqrt(sum(axis**2 for axis in self.sense.gyroscope)),
+        # )
 
         yield self.orientation_metric()
         # yield self.accelerometer_metric()
