@@ -183,9 +183,9 @@ class SenseHatBCollector(object):
         )
 
         yield self.orientation_metric()
-        yield self.accelerometer_metric()
-        yield self.gyroscope_metric()
-        yield self.magnetometer_metric()
+        # yield self.accelerometer_metric()
+        # yield self.gyroscope_metric()
+        # yield self.magnetometer_metric()
 
 
 if __name__ == "__main__":
